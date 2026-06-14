@@ -4950,6 +4950,10 @@ yahoo.com,59262,RESELLER,e1a5b5b6e3255540
 
 yahoo.com,59318,RESELLER,e1a5b5b6e3255540
 
+# =============== YANDEX (2026) ===============
+yandex.com, 321755897, DIRECT
+yango-ads.com, 321755897, DIRECT
+
 yandex.com, 302446435, DIRECT
 
 yandex.com, 63904735, RESELLER
