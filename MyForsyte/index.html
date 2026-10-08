@@ -19,6 +19,23 @@
 <link rel="canonical" href="https://tasuhanov.github.io/MyForsyte/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+  m[i].l=1*new Date();
+  for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+  (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+  ym(113569979, "init", {
+    clickmap: true,
+    trackLinks: true,
+    accurateTrackBounce: true,
+    webvisor: true
+  });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/113569979" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+<!-- /Yandex.Metrika counter -->
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -594,6 +611,7 @@ section { padding-block: clamp(56px, 8vw, 96px); border-top: 1px solid var(--lin
     </a>
     <div class="foot-meta">
       <span>© 2026 Forsyte</span>
+      <span>Сайт использует Яндекс Метрику для подсчёта посещений</span>
       <span>Чеченская Республика, Россия</span>
       <a data-link="privacy" data-plain="1">Политика конфиденциальности</a>
     </div>
@@ -647,6 +665,15 @@ const LINKS = {
       el.href = url;
       el.target = "_blank";
       el.rel = "noopener";
+      el.addEventListener("click", function () {
+        const key = el.dataset.link;
+        const goal = key === "boosty" ? "support_click"
+          : /googleplay/i.test(key) ? "googleplay_click"
+          : /rustore/i.test(key) ? "rustore_click"
+          : (key === "telegram" || key === "vk") ? "social_click"
+          : "link_click";
+        try { if (window.ym) ym(113569979, "reachGoal", goal); } catch (e) {}
+      });
     } else if (el.dataset.fallback) {
       el.href = el.dataset.fallback;
     } else {
